@@ -1,4 +1,5 @@
 # Here is the github link if you want to follow along the progress and see the final product
+# https://github.com/LenaWang03/QueensSolver
 
 
 from board_solver import solve
