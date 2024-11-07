@@ -1,8 +1,10 @@
+# Here is the github link if you want to follow along the progress and see the final product
+
+
+from board_solver import solve
 import cv2 as cv
 import numpy as np
 import math
-from board_solver import solve
-
 
 # Load the image
 original = cv.imread('board.png')
@@ -37,19 +39,18 @@ padding = 10
 for i in range(grid_size):
     row = []
     for j in range(grid_size):
-        # calculate cell coordinates
+        # get coordinates of the cell 
         cell_x = j * cell_width
         cell_y = i * cell_height
-
         padding = 15
         cell = grid[cell_y+padding:cell_y+cell_height-padding, cell_x+padding:cell_x+cell_width-padding]
         
-        # get the average color of the cell
+        # get average color of the cell
         avg_color = cell.mean(axis=0).mean(axis=0)
         avg_color = avg_color.astype(int)
         avg_color = tuple(avg_color)
         
-        # append the color in RGB format
+        # add the color in RGB format
         if avg_color not in color_map:
             color_map[avg_color] = str(color_index)
             reverse_color_map[str(color_index)] = avg_color
@@ -58,7 +59,8 @@ for i in range(grid_size):
         
     board.append(row)
 
-solve(board)
+result = solve(board)
+
 # Print the board to the console
 for row in board:
     print(row)
